@@ -1,0 +1,27 @@
+.orders {
+  // .orders__container-big
+  &__container-big {
+    @include adaptiveValue("padding-left", 40, 15);
+    
+  }
+  // .orders__container
+  &__container {
+    margin: 0;
+    @include adaptiveValue("padding-top", 60, 30);
+  }
+  // .orders__title
+  &__title {
+    &:not(:last-child) {
+      margin-bottom: rem(40);
+    }
+  }
+  // .orders__items
+  &__items {
+    width: 100%;
+    display: grid;
+    gap: rem(10);
+  }
+  // .orders__item
+  &__item {
+  }
+}

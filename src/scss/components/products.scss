@@ -1,0 +1,25 @@
+.item-product {
+  border: 1px solid $greyColor;
+  background-color: #eee;
+  border-radius: rem(4);
+  padding: rem(10);
+  gap: rem(10);
+  display: grid;
+  align-items: center;
+  grid-template-columns: rem(60) 1fr 1fr 1fr 1fr rem(20);
+
+  // .item-product__image
+  &__image {
+    width: rem(40);
+    max-height: 100%;
+  }
+  // .item-product__title
+  &__title {
+  }
+  // .item-product__type
+  &__type {
+  }
+  // .item-product__date
+  &__date {
+  }
+}
