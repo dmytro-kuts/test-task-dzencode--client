@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import LogoPng from '../assets/logo.png';
-import { ReactComponent as ClockSvg } from '../assets/icons/clock.svg';
+import LogoPng from '../assets/img/logo.png';
+import { ReactComponent as ClockSvg } from '../assets/img/icons/clock.svg';
 
 export const TopMenu = () => {
   const [currentTime, setCurrentTime] = React.useState(new Date());

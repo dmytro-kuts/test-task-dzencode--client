@@ -1,0 +1,151 @@
+//========================================================================================================================================================
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: rem(10);
+
+  &--inherit {
+    color: $whiteColor;
+    transition: border 0.3s;
+    border: 1px solid #ffffff00;
+    padding: rem(4) rem(18);
+    border-radius: rem(20);
+    @media (any-hover: hover) {
+      &:hover {
+        border: 1px solid $whiteColor;
+      }
+    }
+  }
+  &--del {
+    padding: rem(4) rem(20);
+    background-color: $whiteColor;
+    border-radius: rem(20);
+    transition: box-shadow 0.3s;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    color: $redColor;
+    @media (any-hover: hover) {
+      &:hover {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+      }
+    }
+    svg {
+      fill: $redColor;
+      width: rem(14);
+      height: rem(14);
+    }
+  }
+  &--remove {
+    svg {
+      z-index: 1;
+      height: 100%;
+      fill: $greyColor;
+      width: rem(16);
+      path {
+        transition: fill 0.3s;
+        fill: $greyColor;
+      }
+      @media (any-hover: hover) {
+        &:hover {
+          fill: $redColor;
+          path {
+            fill: $redColor;
+          }
+        }
+      }
+    }
+
+  }
+  &--close {
+    position: absolute;
+    width: rem(32);
+    height: rem(32);
+    border-radius: 50%;
+    background-color: $whiteColor;
+    top: rem(-12);
+    right: rem(-12);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    svg {
+      width: rem(14);
+      height: rem(14);
+      transition: all 0.3s;
+      fill: $greyColor;
+      @media (any-hover: hover) {
+        &:hover {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+  &--add {
+    svg {
+      transition: all 0.3s;
+      width: rem(20);
+      height: rem(20);
+      fill: $greenColor;
+    }
+    span {
+      transition: color 0.3s;
+      font-size: rem(14);
+      color: $greenColor;
+    }
+    @media (any-hover: hover) {
+      &:hover {
+        svg {
+          transform: rotate(-180deg);
+          fill: #659f28;
+        }
+        span {
+          color: #659f28;
+        }
+      }
+    }
+  }
+  &--list {
+    padding: rem(6);
+    max-width: fit-content;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #fff;
+      top: 0;
+      left: 0;
+      transition: all 0.3s;
+    }
+    svg {
+      width: rem(18);
+      z-index: 1;
+      height: 100%;
+      fill: $greyColor;
+      path {
+        transition: fill 0.3s;
+        fill: $greyColor;
+      }
+      circle {
+        transition: fill 0.3s;
+      }
+    }
+    @media (any-hover: hover) {
+      &:hover {
+        &::after {
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+        svg {
+          fill: $greenColor;
+          path {
+            fill: $greenColor;
+          }
+          circle {
+            fill: $greenColor;
+          }
+        }
+      }
+    }
+  }
+
+}

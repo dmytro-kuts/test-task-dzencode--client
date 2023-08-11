@@ -1,13 +1,12 @@
 .orders {
   // .orders__container-big
   &__container-big {
-    @include adaptiveValue("padding-left", 40, 15);
-    
+    @include adaptiveValue('padding-left', 40, 15);
   }
   // .orders__container
   &__container {
     margin: 0;
-    @include adaptiveValue("padding-top", 60, 30);
+    @include adaptiveValue('padding-top', 60, 30);
   }
   // .orders__title
   &__title {
@@ -15,13 +14,31 @@
       margin-bottom: rem(40);
     }
   }
+  // .orders__body
+  &__body {
+    &.active {
+      display: flex;
+      align-items: flex-start;
+      gap: rem(20);
+    }
+  }
   // .orders__items
   &__items {
-    width: 100%;
-    display: grid;
-    gap: rem(10);
   }
   // .orders__item
   &__item {
+    &:not(:last-child) {
+      margin-bottom: rem(10);
+    }
+  }
+  // .orders__detail
+  &__detail {
+    border: 1px solid $LightGreyColor;
+    background-color: #eee;
+    border-radius: rem(4);
+    width: 100%;
   }
 }
+
+
+

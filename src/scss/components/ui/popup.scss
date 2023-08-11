@@ -10,6 +10,7 @@
   visibility: hidden;
   pointer-events: none;
   opacity: 0;
+  z-index: 20;
   &.open {
     visibility: visible;
     overflow: auto;
@@ -46,31 +47,6 @@
       transform: scale(1);
     }
   }
-  // .popup__close
-  &__close {
-    position: absolute;
-    width: rem(32);
-    height: rem(32);
-    border-radius: 50%;
-    background-color: $whiteColor;
-    top: rem(-18);
-    right: rem(-18);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    svg {
-      width: rem(14);
-      height: rem(14);
-      transition: all 0.3s;
-      fill: $greyColor;
-      @media (any-hover: hover) {
-        &:hover {
-          transform: rotate(180deg);
-        }
-      }
-    }
-  }
   // .popup__title
   &__title {
     font-weight: 500;
@@ -90,9 +66,6 @@
     justify-content: flex-end;
     align-items: center;
     gap: rem(20);
-  }
-  // .popup__button
-  &__button {
   }
 }
 .body-popup {

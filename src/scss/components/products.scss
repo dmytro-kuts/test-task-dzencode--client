@@ -1,12 +1,12 @@
 .item-product {
-  border: 1px solid $greyColor;
+  border: 1px solid $LightGreyColor;
   background-color: #eee;
   border-radius: rem(4);
   padding: rem(10);
   gap: rem(10);
   display: grid;
   align-items: center;
-  grid-template-columns: rem(60) 1fr 1fr 1fr 1fr rem(20);
+  grid-template-columns: rem(60) 1fr rem(200) rem(400)  rem(200) rem(20);
 
   // .item-product__image
   &__image {

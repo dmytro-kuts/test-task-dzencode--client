@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
-import PhotoCover from '../assets/user/photo-cover.svg';
-import { ReactComponent as SettingsSvg } from '../assets/icons/settings.svg';
+import PhotoCover from '../assets/img/user/photo-cover.svg';
+import { ReactComponent as SettingsSvg } from '../assets/img/icons/settings.svg';
 
 export const NavigationMenu = () => {
   return (

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Products } from '../components/Products';
 
 export const ProductsPage = () => {
-  const { products } = useSelector((state) => state.products);
+  const { products, isLoading } = useSelector((state) => state.products);
   const [filterType, setFilterType] = useState('');
 
   const filteredProducts = filterType
@@ -21,7 +21,9 @@ export const ProductsPage = () => {
               Products /<span> {filteredProducts.length ? filteredProducts.length : 0}</span>
             </h2>
             <div className="header-products__select select">
-              <label htmlFor="typeFilter" className="select__label">Filter by Type:</label>
+              <label htmlFor="typeFilter" className="select__label">
+                Filter by Type:
+              </label>
               <select
                 id="typeFilter"
                 value={filterType}
@@ -37,7 +39,7 @@ export const ProductsPage = () => {
               </select>
             </div>
           </div>
-          <Products products={filteredProducts} />
+          <Products products={filteredProducts} isLoading={isLoading} />
         </div>
       </div>
     </section>

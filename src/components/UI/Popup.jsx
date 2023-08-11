@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { ReactComponent as CloseSvg } from '../../assets/icons/close.svg';
-import { ReactComponent as RemoveSvg } from '../../assets/icons/remove.svg';
+import { ButtonInherit, ButtonDelate, ButtonClose } from './buttons';
 
 export const Popup = ({ isOpen, onClose, onDelete, obj }) => {
   const popupClassName = isOpen ? 'popup open' : 'popup';
@@ -10,9 +9,8 @@ export const Popup = ({ isOpen, onClose, onDelete, obj }) => {
     <div className={popupClassName}>
       <div className="popup__wrapper">
         <div className="popup__content">
-          <button className="popup__close" onClick={onClose}>
-            <CloseSvg />
-          </button>
+          <ButtonClose click={onClose} />
+
           <h3 className="popup__title">Are you sure you want to delete this object?</h3>
           <div className="popup__item  item-popup">
             <div className="body-popup__image">
@@ -21,13 +19,8 @@ export const Popup = ({ isOpen, onClose, onDelete, obj }) => {
             <div className="body-popup__title">{obj?.title}</div>
           </div>
           <div className="popup__actions">
-            <button className="popup__button button button--inherit" onClick={onClose}>
-              Cancel
-            </button>
-            <button className="popup__button button button--del" onClick={onDelete}>
-              <RemoveSvg/>
-              Delete
-            </button>
+            <ButtonInherit click={onClose} title="Cancel" />
+            <ButtonDelate click={onDelete} title="Delete" />
           </div>
         </div>
       </div>

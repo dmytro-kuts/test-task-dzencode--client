@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
 import axios from '../../api/axios';
 
 const initialState = {
@@ -6,12 +7,10 @@ const initialState = {
   isLoading: false,
 };
 
-
-
 export const fetchOrders = createAsyncThunk('orders/fetchOrders', async () => {
   try {
     const { data } = await axios.get('/orders-products');
-  
+
     return data;
   } catch (error) {}
 });
@@ -21,7 +20,7 @@ const ordersSlice = createSlice({
   initialState,
   reducers: {
     deleteOrder: (state, action) => {
-      return state.filter((order) => order.id !== action.payload);
+      // return state.filter((order) => order.id !== action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -38,7 +37,6 @@ const ordersSlice = createSlice({
   },
 });
 
-export const {  deleteOrder } = ordersSlice.actions;
-
+export const { deleteOrder } = ordersSlice.actions;
 
 export default ordersSlice.reducer;

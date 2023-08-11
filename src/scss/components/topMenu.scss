@@ -24,6 +24,7 @@
   }
 }
 .active-top-menu {
+  min-width: rem(148);
   // .active-top-menu__wrap
   &__wrap {
     font-size: rem(14);
