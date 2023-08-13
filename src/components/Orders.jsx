@@ -8,11 +8,15 @@ import { Popup } from '../components/UI/Popup';
 import { Preloader } from '../components/UI/Preloader';
 import { ButtonAdd, ButtonClose, ButtonList, ButtonRemove } from '../components/UI/buttons';
 
+import { useTotalPriceCalculator, useDateFormat } from '../hooks/';
+
 import { ReactComponent as ArrowSvg } from '../assets/img/icons/arrow.svg';
 import MonitorPng from '../assets/img/products/monitor.png';
 
 export const Orders = () => {
   const dispatch = useDispatch();
+  const totalPriceCalculator = useTotalPriceCalculator();
+  const dateFormat = useDateFormat();
 
   const { orders, isLoading } = useSelector((state) => state.orders);
   const { products } = useSelector((state) => state.products);
@@ -39,36 +43,6 @@ export const Orders = () => {
     setSelectedProducts(products.filter((product) => product.order === order.id));
   };
 
-  const formatShortDate = (dateStr) => {
-    const date = new Date(dateStr);
-    return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'numeric' });
-  };
-
-  const formatLongDate = (dateStr) => {
-    const date = new Date(dateStr);
-    return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
-  };
-
-  const formatPrice = (price) => {
-    return price.toLocaleString('en', { minimumFractionDigits: 2 });
-  };
-
-  const calculateTotalPriceUSD = (orderProducts) => {
-    const totalPrice = orderProducts.reduce((total, product) => {
-      const productPrice = product.price.find((price) => price.symbol === 'USD');
-      return total + productPrice.value;
-    }, 0);
-    return formatPrice(totalPrice);
-  };
-
-  const calculateTotalPriceUAH = (orderProducts) => {
-    const totalPrice = orderProducts.reduce((total, product) => {
-      const productPrice = product.price.find((price) => price.symbol === 'UAH');
-      return total + productPrice.value;
-    }, 0);
-    return formatPrice(totalPrice);
-  };
-
   React.useEffect(() => {
     dispatch(fetchOrders());
     dispatch(fetchProducts());
@@ -82,8 +56,8 @@ export const Orders = () => {
         ) : (
           orders?.map((order) => {
             const orderProducts = products.filter((product) => product.order === order.id);
-            const totalUSD = calculateTotalPriceUSD(orderProducts);
-            const totalUAH = calculateTotalPriceUAH(orderProducts);
+            const totalUSD = totalPriceCalculator(orderProducts, 'USD');
+            const totalUAH = totalPriceCalculator(orderProducts, 'UAH');
 
             return (
               <li
@@ -102,8 +76,8 @@ export const Orders = () => {
                 </div>
 
                 <div className="item-order__date">
-                  <span>{formatShortDate(order.date)}</span>
-                  <span>{formatLongDate(order.date)}</span>
+                  <span>{dateFormat.formatDate(order.date, 'dd/mm')}</span>
+                  <span>{dateFormat.formatDate(order.date, 'dd/mmmm/yyyy')}</span>
                 </div>
 
                 {!selectedOrderId && (

@@ -4,11 +4,13 @@ import { useDispatch } from 'react-redux';
 import { fetchProducts } from '../redux/products/productsSlice';
 
 import { Preloader } from '../components/UI/Preloader';
+import { useDateFormat } from '../hooks/';
 
 import MonitorPng from '../assets/img/products/monitor.png';
 
 export const Products = ({ products, isLoading }) => {
   const dispatch = useDispatch();
+  const dateFormat = useDateFormat();
 
   React.useEffect(() => {
     dispatch(fetchProducts());
@@ -26,11 +28,16 @@ export const Products = ({ products, isLoading }) => {
             ) : (
               <img src={MonitorPng} alt="Product" className="item-product__image" />
             )}
-            <h3 className="item-product__title">{product.title}</h3>
+            <h3 className="item-product__title">
+              {product.title}
+              <span>{product.serialNumber}</span>
+            </h3>
             <div className="item-product__type">{product.type}</div>
-            <div className="item-product__date">
-              Guarantee Start: {product.guarantee.start} <br />
-              Guarantee End: {product.guarantee.end}
+            <div className="item-product__date-guarantee">
+              <span>Start: </span>
+              {dateFormat.formatDate(product.guarantee.start, 'dd/mm/yyyy')}
+              <span>End: </span>
+              {dateFormat.formatDate(product.guarantee.end, 'dd/mm/yyyy')}
             </div>
             <div className="item-product__price">
               {product.price.map((price) => (
@@ -41,6 +48,10 @@ export const Products = ({ products, isLoading }) => {
               ))}
             </div>
             <div className="item-product__order">{product.order}</div>
+            <div className="item-product__date">
+              <span>{dateFormat.formatDate(product.date, 'dd/mm')}</span>
+              <span>{dateFormat.formatDate(product.date, 'dd/mmmm/yyyy')}</span>
+            </div>
           </li>
         ))
       )}
