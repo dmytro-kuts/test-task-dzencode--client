@@ -4,7 +4,7 @@ import { ReactComponent as CloseSvg } from '../../../assets/img/icons/close.svg'
 
 export const ButtonClose = ({ click }) => {
   return (
-    <button className="button button--close" onClick={click}>
+    <button className="button button--close" aria-label="Close" onClick={click}>
       <CloseSvg />
     </button>
   );

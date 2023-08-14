@@ -9,8 +9,10 @@ export const NavigationMenu = () => {
     <aside className="page__sidebar sidebar">
       <div className="sidebar__container-big">
         <div className="sidebar__avatar avatar-sidebar">
-          <img className='avatar-sidebar__image' src={PhotoCover} alt="Avatar" />
-          <Link to="#" className="avatar-sidebar__link"><SettingsSvg/></Link>
+          <img className="avatar-sidebar__image" src={PhotoCover} alt="Avatar" />
+          <Link to="/" className="avatar-sidebar__link">
+            <SettingsSvg />
+          </Link>
         </div>
         <nav className="sidebar__nav">
           <ul className="sidebar__items">

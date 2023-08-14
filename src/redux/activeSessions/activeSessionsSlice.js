@@ -7,8 +7,7 @@ const initialState = {
 const activeSessionsSlice = createSlice({
   name: 'activeSessions',
   initialState,
-  reducers: {
-  },
+  reducers: {},
 });
 
 export const { increment, decrement } = activeSessionsSlice.actions;

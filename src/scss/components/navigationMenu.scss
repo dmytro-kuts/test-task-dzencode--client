@@ -1,13 +1,13 @@
 //========================================================================================================================================================
 .sidebar {
   @include adaptiveValue('min-width', 200, 140, 0, 1920, 1440);
-  
+
   background-color: rgb(255, 255, 255);
-  @media (min-width:$mobile){
+  @media (min-width: $mobile) {
     min-height: 100%;
   }
-  @media (max-width:$mobile){
-     height: fit-content; 
+  @media (max-width: $mobile) {
+    height: fit-content;
   }
 
   // .sidebar__container-big
@@ -72,8 +72,9 @@
 .avatar-sidebar {
   // .avatar-sidebar__image
   &__image {
+    overflow: hidden;
     border-radius: 50%;
-    max-width: rem(70);
+    width: rem(70);
     max-height: 100%;
   }
   // .avatar-sidebar__link
@@ -87,8 +88,8 @@
     bottom: 0;
     right: 0;
     background-color: $whiteColor;
-    @media (any-hover: hover){
-      &:hover{
+    @media (any-hover: hover) {
+      &:hover {
         svg {
           transform: rotate(-180deg);
         }

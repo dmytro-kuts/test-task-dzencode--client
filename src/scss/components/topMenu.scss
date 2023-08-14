@@ -4,7 +4,6 @@
   background-color: #fff;
   // .top-menu__container-big
   &__container-big {
-    
   }
   // .top-menu__container
   &__container {
@@ -18,7 +17,7 @@
   // .top-menu__logo
   &__logo {
     img {
-      max-width: rem(40);
+      width: rem(40);
       max-height: 100%;
     }
   }

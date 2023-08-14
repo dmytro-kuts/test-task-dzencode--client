@@ -16,6 +16,6 @@ export const useDateFormat = () => {
   };
 
   return {
-    formatDate
+    formatDate,
   };
 };

@@ -4,7 +4,7 @@ import { ReactComponent as RemoveSvg } from '../../../assets/img/icons/remove.sv
 
 export const ButtonRemove = ({ click }) => {
   return (
-    <button className="button button--remove" onClick={click}>
+    <button className="button button--remove" aria-label="Remove" onClick={click}>
       <RemoveSvg />
     </button>
   );
