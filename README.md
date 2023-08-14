@@ -62,24 +62,24 @@ Displays orders and products with details.
 # Folder Structure
 The project's directory structure is organized as follows:
 
-|-- node_modules
-|-- public
-|-- src
-|   |-- api
-|   |-- assets
-|   |-- components
-|   |-- hooks
-|   |-- layouts
-|   |-- pages
-|   |-- redux
-|   |-- scss
-|   |-- App.js
-|   |-- index.js
-|-- .env
-|-- .gitignore
-|-- package-lock.json
-|-- package.json
-|-- README.md
+- |-- node_modules
+- |-- public
+- |-- src
+- |   |-- api
+- |   |-- assets
+- |   |-- components
+- |   |-- hooks
+- |   |-- layouts
+- |   |-- pages
+- |   |-- redux
+- |   |-- scss
+- |   |-- App.js
+- |   |-- index.js
+- |-- .env
+- |-- .gitignore
+- |-- package-lock.json
+- |-- package.json
+- |-- README.md
 
 
 
