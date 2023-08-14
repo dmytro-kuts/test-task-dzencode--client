@@ -15,10 +15,11 @@ export const Popup = ({ isOpen, onClose, onDelete, obj }) => {
 
           <h3 className="popup__title">Are you sure you want to delete this object?</h3>
           <div className="popup__item  item-popup">
-            <div className="body-popup__image">
-              <img src={obj?.photo} alt={obj?.title} />
-            </div>
-            <div className="body-popup__title">{obj?.title}</div>
+            {obj?.serialNumber && (
+              <div className={`item-popup__dot ${obj.isNew ? 'active' : ''}`}></div>
+            )}
+            {obj?.photo && <img className="item-popup__image" src={obj.photo} alt={obj.title} />}
+            <div className="item-popup__title">{obj?.title} <span>{obj?.serialNumber}</span> </div>
           </div>
           <div className="popup__actions">
             <ButtonInherit click={onClose} title="Cancel" />

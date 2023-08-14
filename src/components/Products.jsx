@@ -3,12 +3,30 @@ import { useDispatch } from 'react-redux';
 
 import { fetchProducts } from '../redux/products/productsSlice';
 
+import { Popup } from '../components/UI/Popup';
 import { Preloader } from '../components/UI/Preloader';
+import { ButtonRemove } from '../components/UI/buttons';
+
 import { useDateFormat } from '../hooks/';
 
 export const Products = ({ products, isLoading }) => {
   const dispatch = useDispatch();
   const dateFormat = useDateFormat();
+
+  const [selectedProducts, setSelectedProducts] = React.useState([]);
+  const [isDeletePopupOpen, setIsDeletePopupOpen] = React.useState(false);
+
+  const handleDeleteClick = (product) => {
+    setSelectedProducts(product);
+    setIsDeletePopupOpen(true);
+  };
+
+  const handleDeleteProduct = () => {
+    if (selectedProducts) {
+      setIsDeletePopupOpen(false);
+      setSelectedProducts(null);
+    }
+  };
 
   React.useEffect(() => {
     dispatch(fetchProducts());
@@ -53,9 +71,16 @@ export const Products = ({ products, isLoading }) => {
               <span>{dateFormat.formatDate(product.date, 'dd/mm')}</span>
               <span>{dateFormat.formatDate(product.date, 'dd/mmmm/yyyy')}</span>
             </div>
+            <ButtonRemove click={() => handleDeleteClick(product)} />
           </li>
         ))
       )}
+      <Popup
+        isOpen={isDeletePopupOpen}
+        onClose={() => setIsDeletePopupOpen(false)}
+        onDelete={handleDeleteProduct}
+        obj={selectedProducts}
+      />
     </ul>
   );
 };
