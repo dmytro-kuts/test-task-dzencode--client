@@ -16,14 +16,17 @@
   }
   // .orders__body
   &__body {
+    padding-bottom: rem(20);
     &.active {
       display: flex;
       align-items: flex-start;
-      gap: rem(20);
+      gap: rem(10);
     }
   }
   // .orders__items
   &__items {
+    
+
   }
   // .orders__item
   &__item {
@@ -34,11 +37,8 @@
   // .orders__detail
   &__detail {
     border: 1px solid $LightGreyColor;
-    background-color: #eee;
+    background-color: $whiteColor;
     border-radius: rem(4);
     width: 100%;
   }
 }
-
-
-

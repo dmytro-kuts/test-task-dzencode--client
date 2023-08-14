@@ -9,8 +9,9 @@ export const useDateFormat = () => {
       options = { day: 'numeric', month: 'numeric' };
     } else if (formatType === 'dd/mm/yyyy') {
       options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+    } else if (formatType === 'dayOfWeek') {
+      options = { weekday: 'long' };
     }
-
     return date.toLocaleDateString('en-GB', options);
   };
 

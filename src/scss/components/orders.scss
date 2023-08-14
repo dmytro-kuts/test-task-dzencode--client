@@ -3,29 +3,36 @@
   position: relative;
   overflow: hidden;
   border: 1px solid $LightGreyColor;
-  background-color: #eee;
+  background-color: $whiteColor;
   border-radius: rem(4);
   padding: rem(10);
   gap: rem(10);
   display: grid;
   align-items: center;
   grid-template-columns: 1fr rem(40) rem(100) rem(200) rem(200) rem(40);
-
+  &::after {
+    content: '';
+    position: absolute;
+    width: rem(40);
+    height: 100%;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    transition: all 0.3s;
+    padding: rem(-20);
+    background-color: rgba(207, 216, 220);
+  }
   .active & {
     grid-template-columns: rem(40) rem(60) rem(200) rem(20);
   }
   &.selected {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
     &::after {
-      content: '';
-      position: absolute;
-      width: rem(40);
-      height: 100%;
-      top: 0;
-      right: 0;
-      background-color: $greyColor;
-      padding: rem(-20);
+      opacity: 1;
     }
   }
+
   // .item-order__title
   &__title {
   }

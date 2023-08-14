@@ -1,29 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+import { useDateFormat } from '../hooks';
 
 import LogoPng from '../assets/img/logo.png';
 import { ReactComponent as ClockSvg } from '../assets/img/icons/clock.svg';
 
 export const TopMenu = () => {
+  const dateFormat = useDateFormat();
+  const activeSessions = useSelector((state) => state.activeSessions.activeSessions);
+
   const [currentTime, setCurrentTime] = React.useState(new Date());
-  const [activeSessions, setActiveSessions] = React.useState(0);
+
+  const formattedTime = currentTime.toLocaleTimeString('en-GB', {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
 
   React.useEffect(() => {
     setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
   }, []);
-
-  const dayOfWeek = currentTime.toLocaleString('en', { weekday: 'long' });
-  const formattedDate = currentTime.toLocaleString('en-GB', {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
-  });
-  const formattedTime = currentTime.toLocaleTimeString('en-GB', {
-    hour: '2-digit',
-    minute: '2-digit',
-  });
 
   return (
     <header className="top-menu">
@@ -34,9 +33,13 @@ export const TopMenu = () => {
           </Link>
           <div className="top-menu__active active-top-menu">
             <div className="active-top-menu__wrap">
-              <div className="active-top-menu__week">{dayOfWeek}</div>
+              <div className="active-top-menu__week">
+                {dateFormat.formatDate(currentTime, 'dayOfWeek')}
+              </div>
               <div className="active-top-menu__inner">
-                <div className="active-top-menu__date">{formattedDate}</div>
+                <div className="active-top-menu__date">
+                  {dateFormat.formatDate(currentTime, 'dd/mmmm/yyyy')}
+                </div>
                 <div className="active-top-menu__time">
                   <ClockSvg />
                   {formattedTime}

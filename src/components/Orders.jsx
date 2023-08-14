@@ -11,7 +11,6 @@ import { ButtonAdd, ButtonClose, ButtonList, ButtonRemove } from '../components/
 import { useTotalPriceCalculator, useDateFormat } from '../hooks/';
 
 import { ReactComponent as ArrowSvg } from '../assets/img/icons/arrow.svg';
-import MonitorPng from '../assets/img/products/monitor.png';
 
 export const Orders = () => {
   const dispatch = useDispatch();
@@ -22,18 +21,19 @@ export const Orders = () => {
   const { products } = useSelector((state) => state.products);
 
   const [selectedOrderId, setSelectedOrderId] = React.useState(null);
+  const [popupSelectedOrder, setPopupSelectedOrder] = React.useState(null);
   const [selectedProducts, setSelectedProducts] = React.useState([]);
   const [isDeletePopupOpen, setIsDeletePopupOpen] = React.useState(false);
 
   const handleDeleteClick = (order) => {
-    setSelectedOrderId(order.id);
+    setPopupSelectedOrder(order);
     setIsDeletePopupOpen(true);
   };
 
   const handleDeleteOrder = () => {
     if (selectedOrderId !== null) {
       dispatch(deleteOrder(selectedOrderId));
-      setSelectedOrderId(null);
+      setPopupSelectedOrder(null);
       setIsDeletePopupOpen(false);
     }
   };
@@ -114,11 +114,8 @@ export const Orders = () => {
           <ul className="detail-orders__list">
             {selectedProducts.map((product) => (
               <li key={product.id} className="detail-orders__product-item product-orders ">
-                {product.photo ? (
-                  <img src={product.photo} alt={product.title} className="product-orders__image" />
-                ) : (
-                  <img src={MonitorPng} alt="Product" className="product-orders__image" />
-                )}
+                <img src={product.photo} alt={product.title} className="product-orders__image" />
+
                 <div className="product-orders__title"> {product.title}</div>
                 <ButtonRemove click={null} />
               </li>
@@ -130,7 +127,7 @@ export const Orders = () => {
         isOpen={isDeletePopupOpen}
         onClose={() => setIsDeletePopupOpen(false)}
         onDelete={handleDeleteOrder}
-        obj={selectedOrderId}
+        obj={popupSelectedOrder}
       />
     </div>
   );

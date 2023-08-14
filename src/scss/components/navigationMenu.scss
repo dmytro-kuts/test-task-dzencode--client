@@ -2,7 +2,7 @@
 .sidebar {
   @include adaptiveValue('min-width', 200, 140, 0, 1920, 1440);
   min-height: 100%;
-  background-color: rgb(220, 220, 220);
+  background-color: rgb(255, 255, 255);
 
   // .sidebar__container-big
   &__container-big {
@@ -40,7 +40,7 @@
       content: '';
       position: absolute;
       width: 0;
-      height: rem(1.5);
+      height: rem(2);
       bottom: 0;
       left: 0;
       background-color: $greyColor;

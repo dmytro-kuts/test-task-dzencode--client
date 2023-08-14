@@ -5,6 +5,8 @@ import { ButtonInherit, ButtonDelate, ButtonClose } from './buttons';
 export const Popup = ({ isOpen, onClose, onDelete, obj }) => {
   const popupClassName = isOpen ? 'popup open' : 'popup';
 
+  console.log(obj);
+
   return (
     <div className={popupClassName}>
       <div className="popup__wrapper">

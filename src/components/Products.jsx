@@ -6,8 +6,6 @@ import { fetchProducts } from '../redux/products/productsSlice';
 import { Preloader } from '../components/UI/Preloader';
 import { useDateFormat } from '../hooks/';
 
-import MonitorPng from '../assets/img/products/monitor.png';
-
 export const Products = ({ products, isLoading }) => {
   const dispatch = useDispatch();
   const dateFormat = useDateFormat();
@@ -23,28 +21,31 @@ export const Products = ({ products, isLoading }) => {
       ) : (
         products?.map((product) => (
           <li key={product.id} className="products__item item-product">
-            {product.photo ? (
-              <img src={product.photo} alt={product.title} className="item-product__image" />
-            ) : (
-              <img src={MonitorPng} alt="Product" className="item-product__image" />
-            )}
+            <div className={`item-product__dot ${product.isNew ? 'active' : ''}`}></div>
+
+            <img src={product.photo} alt={product.title} className="item-product__image" />
+
             <h3 className="item-product__title">
               {product.title}
               <span>{product.serialNumber}</span>
             </h3>
             <div className="item-product__type">{product.type}</div>
-            <div className="item-product__date-guarantee">
-              <span>Start: </span>
-              {dateFormat.formatDate(product.guarantee.start, 'dd/mm/yyyy')}
-              <span>End: </span>
-              {dateFormat.formatDate(product.guarantee.end, 'dd/mm/yyyy')}
+            <div className="item-product__date-guarantee date-guarantee">
+              <div className="date-guarantee__item">
+                <span>Start: </span>
+                {dateFormat.formatDate(product.guarantee.start, 'dd/mm/yyyy')}
+              </div>
+              <div className="date-guarantee__item">
+                <span>End: </span>
+                {dateFormat.formatDate(product.guarantee.end, 'dd/mm/yyyy')}
+              </div>
             </div>
             <div className="item-product__price">
               {product.price.map((price) => (
-                <div key={price.symbol}>
-                  <span>{price.value.toLocaleString('en', { minimumFractionDigits: 2 })}</span>
-                  <span>{price.symbol}</span>
-                </div>
+                <span key={price.symbol}>
+                  {price.value.toLocaleString('en', { minimumFractionDigits: 2 })}
+                  {price.symbol === 'USD' ? ' $' : ` ${price.symbol}`}
+                </span>
               ))}
             </div>
             <div className="item-product__order">{product.order}</div>

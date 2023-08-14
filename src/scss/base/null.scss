@@ -22,7 +22,6 @@ html {
 }
 html,
 body {
-  
   height: 100%;
   min-width: $minWidth + px;
 }
@@ -31,7 +30,6 @@ body {
   line-height: 1;
   font-family: $fontFamily;
   font-size: $fontSize;
-  //text-rendering: optimizeLegibility;
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -77,21 +75,26 @@ input:-webkit-autofill:active {
 }
 
 ::-webkit-scrollbar {
-  width: rem(8);
-  height: rem(8);
+  width: rem(10);
+  height: rem(10);
+  border: 1px solid rgb(215, 223, 226);
+  border-radius: rem(8);
 }
 ::-webkit-scrollbar-button {
-  background-color: #666;
+  
+  
+
 }
 ::-webkit-scrollbar-track {
-  background-color: #999;
+  
 }
 ::-webkit-scrollbar-track-piece {
-  background-color: #a7a7a7;
 }
 ::-webkit-scrollbar-thumb {
-  height: 50px;
-  background-color: #666;
+  height: rem(4);
+  background-color: rgb(215, 223, 226);
+  border-radius: rem(8);
+  
 }
 ::-webkit-scrollbar-corner {
   background-color: #999;
