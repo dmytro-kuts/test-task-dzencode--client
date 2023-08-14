@@ -1,7 +1,7 @@
 //========================================================================================================================================================
 .item-order {
+  width: 100%;
   position: relative;
-  overflow: hidden;
   border: 1px solid $LightGreyColor;
   background-color: $whiteColor;
   border-radius: rem(4);
@@ -9,7 +9,7 @@
   gap: rem(10);
   display: grid;
   align-items: center;
-  grid-template-columns: 1fr rem(40) rem(100) rem(200) rem(200) rem(40);
+  grid-template-columns: minmax(rem(400), 1fr) rem(40) rem(100) rem(200) rem(200) rem(40);
   &::after {
     content: '';
     position: absolute;
@@ -35,6 +35,8 @@
 
   // .item-order__title
   &__title {
+    text-decoration: underline;
+    text-decoration-color: $LightGreyColor;
   }
   // .item-order__products
   &__products {
@@ -91,7 +93,6 @@
 //========================================================================================================================================================
 .detail-orders {
   position: relative;
-
   // .detail-orders__header
   &__header {
     padding: rem(20) rem(20) rem(20) rem(20);
@@ -107,35 +108,37 @@
   }
   // .detail-orders__product-item
   &__product-item {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: rem(20);
-    padding: rem(10) rem(20);
-    &::before,
-    &::after {
-      position: absolute;
-      width: 100%;
-      left: 0;
-      background-color: $LightGreyColor;
-      height: rem(1);
-    }
-    &:first-child {
-      &::before {
-        content: '';
-        top: 0;
-      }
-    }
-    &:not(:last-child) {
-      &::after {
-        content: '';
-        bottom: 0;
-      }
-    }
   }
 }
+//========================================================================================================================================================
 .product-orders {
-  display: flex;
+  min-width: 100%;
+  position: relative;
+  display: grid;
+  grid-template-columns: rem(40) rem(60) minmax(rem(400), 1fr) rem(20);
+  align-items: center;
+  gap: rem(20);
+  padding: rem(10) rem(20);
+  &::before,
+  &::after {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    background-color: $LightGreyColor;
+    height: rem(1);
+  }
+  &:first-child {
+    &::before {
+      content: '';
+      top: 0;
+    }
+  }
+  &:not(:last-child) {
+    &::after {
+      content: '';
+      bottom: 0;
+    }
+  }
   // .product-orders__dot
   &__dot {
     position: relative;
@@ -164,13 +167,5 @@
   // .product-orders__title
   &__title {
     flex: 1 1 auto;
-    display: flex;
-    flex-direction: column;
-    gap: rem(4);
-    span {
-      font-size: rem(14);
-      color: $greyColor;
-    }
   }
-
 }

@@ -6,9 +6,9 @@
   gap: rem(30);
   display: grid;
   align-items: center;
-  grid-template-columns: rem(10) rem(60) rem(400) rem(150) rem(200) rem(200) rem(40) rem(200) rem(
-      20
-    );
+  grid-template-columns:
+    rem(10) rem(60) minmax(rem(400), 1fr) rem(150) rem(200) rem(200) minmax(rem(400), 1fr)
+    rem(200) rem(20);
 
   // .item-product__dot
   &__dot {
@@ -37,13 +37,6 @@
   }
   // .item-product__title
   &__title {
-    display: flex;
-    flex-direction: column;
-    gap: rem(4);
-    span {
-      font-size: rem(14);
-      color: $greyColor;
-    }
   }
   // .item-product__type
   &__type {

@@ -116,8 +116,8 @@ export const Orders = () => {
               <li key={product.id} className="detail-orders__product-item product-orders ">
                 <div className={`product-orders__dot ${product.isNew ? 'active' : ''}`}></div>
                 <img src={product.photo} alt={product.title} className="product-orders__image" />
-                <div className="product-orders__title">
-                  {product.title} <span>{product.serialNumber}</span>{' '}
+                <div className="product-orders__title title-small">
+                  <span>{product.title}</span> <span>{product.serialNumber}</span>
                 </div>
                 <ButtonRemove click={() => handleDeleteClick(product)} />
               </li>

@@ -19,7 +19,7 @@ export const Popup = ({ isOpen, onClose, onDelete, obj }) => {
               <div className={`item-popup__dot ${obj.isNew ? 'active' : ''}`}></div>
             )}
             {obj?.photo && <img className="item-popup__image" src={obj.photo} alt={obj.title} />}
-            <div className="item-popup__title">{obj?.title} <span>{obj?.serialNumber}</span> </div>
+            <div className="item-popup__title title-small"><span>{obj?.title}</span> <span>{obj?.serialNumber}</span> </div>
           </div>
           <div className="popup__actions">
             <ButtonInherit click={onClose} title="Cancel" />

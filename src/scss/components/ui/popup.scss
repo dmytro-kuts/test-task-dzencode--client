@@ -81,13 +81,7 @@
   }
   // .item-popup__title
   &__title {
-    display: flex;
-    flex-direction: column;
-    gap: rem(4);
-    span {
-      font-size: rem(14);
-      color: $greyColor;
-    }
+
   }
   // .item-popup__dot
   &__dot {

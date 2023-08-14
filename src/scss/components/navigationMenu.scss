@@ -1,8 +1,14 @@
 //========================================================================================================================================================
 .sidebar {
   @include adaptiveValue('min-width', 200, 140, 0, 1920, 1440);
-  min-height: 100%;
+  
   background-color: rgb(255, 255, 255);
+  @media (min-width:$mobile){
+    min-height: 100%;
+  }
+  @media (max-width:$mobile){
+     height: fit-content; 
+  }
 
   // .sidebar__container-big
   &__container-big {

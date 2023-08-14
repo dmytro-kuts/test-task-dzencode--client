@@ -10,13 +10,16 @@
   }
   // .orders__title
   &__title {
+    padding-left: rem(20);
     &:not(:last-child) {
       margin-bottom: rem(40);
     }
   }
   // .orders__body
   &__body {
-    padding-bottom: rem(20);
+    width: 100%;
+    overflow: auto;
+    padding: rem(20) rem(60) rem(20) rem(20);
     &.active {
       display: flex;
       align-items: flex-start;
@@ -25,8 +28,7 @@
   }
   // .orders__items
   &__items {
-    
-
+    min-width: fit-content;
   }
   // .orders__item
   &__item {
@@ -36,6 +38,7 @@
   }
   // .orders__detail
   &__detail {
+    min-width: fit-content;
     border: 1px solid $LightGreyColor;
     background-color: $whiteColor;
     border-radius: rem(4);
