@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchOrders, deleteOrder } from '../redux/orders/ordersSlice';
-import { fetchProducts } from '../redux/products/productsSlice';
+import { fetchProducts, deleteProduct } from '../redux/products/productsSlice';
 
 import { Popup } from '../components/UI/Popup';
 import { Preloader } from '../components/UI/Preloader';
@@ -21,20 +21,26 @@ export const Orders = () => {
   const { products } = useSelector((state) => state.products);
 
   const [selectedOrderId, setSelectedOrderId] = React.useState(null);
-  const [popupSelectedOrder, setPopupSelectedOrder] = React.useState(null);
   const [selectedProducts, setSelectedProducts] = React.useState([]);
   const [isDeletePopupOpen, setIsDeletePopupOpen] = React.useState(false);
+  const [deleteTarget, setDeleteTarget] = React.useState(null);
 
-  const handleDeleteClick = (order) => {
-    setPopupSelectedOrder(order);
+  const handleDelete = (obj) => {
+    setDeleteTarget(obj);
     setIsDeletePopupOpen(true);
   };
 
-  const handleDeleteOrder = () => {
-    if (selectedOrderId !== null) {
-      dispatch(deleteOrder(selectedOrderId));
-      setPopupSelectedOrder(null);
+  const handleConfirmDelete = () => {
+    if (deleteTarget) {
+      if ('order' in deleteTarget) {
+        dispatch(deleteProduct(deleteTarget.id));
+      } else {
+        dispatch(deleteOrder(deleteTarget.id));
+      }
+      setDeleteTarget(null);
       setIsDeletePopupOpen(false);
+
+      setSelectedProducts(selectedProducts.filter((product) => product.id !== deleteTarget.id));
     }
   };
 
@@ -87,7 +93,7 @@ export const Orders = () => {
                   </div>
                 )}
 
-                {!selectedOrderId && <ButtonRemove click={() => handleDeleteClick(order)} />}
+                {!selectedOrderId && <ButtonRemove click={() => handleDelete(order)} />}
 
                 {selectedOrderId && (
                   <div className="item-order__arrow">
@@ -103,7 +109,7 @@ export const Orders = () => {
         <div className="orders__detail detail-orders">
           <div className="detail-orders__header">
             <h3 className="detail-orders__title">
-              {selectedOrderId && orders.find((order) => order.id === selectedOrderId)?.title}
+              {selectedOrderId && orders?.find((order) => order.id === selectedOrderId)?.title}
             </h3>
 
             <ButtonClose click={() => setSelectedOrderId(null)} />
@@ -119,7 +125,7 @@ export const Orders = () => {
                 <div className="product-orders__title title-small">
                   <span>{product.title}</span> <span>{product.serialNumber}</span>
                 </div>
-                <ButtonRemove click={() => handleDeleteClick(product)} />
+                <ButtonRemove click={() => handleDelete(product)} />
               </li>
             ))}
           </ul>
@@ -128,8 +134,8 @@ export const Orders = () => {
       <Popup
         isOpen={isDeletePopupOpen}
         onClose={() => setIsDeletePopupOpen(false)}
-        onDelete={handleDeleteOrder}
-        obj={popupSelectedOrder}
+        onDelete={handleConfirmDelete}
+        obj={deleteTarget}
       />
     </div>
   );

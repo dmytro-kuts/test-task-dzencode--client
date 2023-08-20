@@ -10,7 +10,7 @@ export const OrdersPage = () => {
       <div className="orders__container-big">
         <div className="orders__container">
           <h2 className="orders__title title">
-            Orders /<span> {orders.length ? orders.length : 0}</span>
+            Orders /<span> {orders?.length ? orders.length : 0}</span>
           </h2>
           <Orders />
         </div>

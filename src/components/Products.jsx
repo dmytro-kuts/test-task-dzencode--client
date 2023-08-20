@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchProducts } from '../redux/products/productsSlice';
+import { fetchProducts, deleteProduct } from '../redux/products/productsSlice';
 import { fetchOrders } from '../redux/orders/ordersSlice';
 
 import { Popup } from '../components/UI/Popup';
@@ -16,18 +16,22 @@ export const Products = ({ products, isLoading }) => {
 
   const { orders } = useSelector((state) => state.orders);
 
-  const [selectedProducts, setSelectedProducts] = React.useState([]);
+  const [selectedProductsId, setSelectedProductsId] = React.useState(null);
   const [isDeletePopupOpen, setIsDeletePopupOpen] = React.useState(false);
+  const [popupSelectedOrder, setPopupSelectedOrder] = React.useState([]);
 
   const handleDeleteClick = (product) => {
-    setSelectedProducts(product);
+    setSelectedProductsId(product.id);
+    setPopupSelectedOrder(product);
     setIsDeletePopupOpen(true);
   };
 
   const handleDeleteProduct = () => {
-    if (selectedProducts) {
+    if (selectedProductsId !== null) {
+      dispatch(deleteProduct(selectedProductsId));
+      setSelectedProductsId(null);
+      setPopupSelectedOrder(null);
       setIsDeletePopupOpen(false);
-      setSelectedProducts(null);
     }
   };
 
@@ -86,7 +90,7 @@ export const Products = ({ products, isLoading }) => {
         isOpen={isDeletePopupOpen}
         onClose={() => setIsDeletePopupOpen(false)}
         onDelete={handleDeleteProduct}
-        obj={selectedProducts}
+        obj={popupSelectedOrder}
       />
     </ul>
   );

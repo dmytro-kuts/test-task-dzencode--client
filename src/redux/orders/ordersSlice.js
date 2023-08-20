@@ -20,7 +20,7 @@ const ordersSlice = createSlice({
   initialState,
   reducers: {
     deleteOrder: (state, action) => {
-      // return state.filter((order) => order.id !== action.payload);
+      state.orders = state.orders.filter((order) => order.id !== action.payload);
     },
   },
   extraReducers: (builder) => {

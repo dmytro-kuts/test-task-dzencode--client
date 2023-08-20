@@ -5,7 +5,6 @@ import { ButtonInherit, ButtonDelate, ButtonClose } from './buttons';
 export const Popup = ({ isOpen, onClose, onDelete, obj }) => {
   const popupClassName = isOpen ? 'popup open' : 'popup';
 
-  console.log(obj);
 
   return (
     <div className={popupClassName}>
@@ -20,12 +19,12 @@ export const Popup = ({ isOpen, onClose, onDelete, obj }) => {
             )}
             {obj?.photo && <img className="item-popup__image" src={obj.photo} alt={obj.title} />}
             <div className="item-popup__title title-small">
-              <span>{obj?.title}</span> <span>{obj?.serialNumber}</span>{' '}
+              <span>{obj?.title}</span> <span>{obj?.serialNumber}</span>
             </div>
           </div>
           <div className="popup__actions">
             <ButtonInherit click={onClose} title="Cancel" />
-            <ButtonDelate click={onDelete} title="Delete" />
+            <ButtonDelate click={() => onDelete(obj)} title="Delete" />
           </div>
         </div>
       </div>
