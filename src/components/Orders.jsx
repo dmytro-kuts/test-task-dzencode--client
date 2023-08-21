@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import { fetchOrders, deleteOrder } from '../redux/orders/ordersSlice';
 import { fetchProducts, deleteProduct } from '../redux/products/productsSlice';
@@ -13,6 +14,7 @@ import { useTotalPriceCalculator, useDateFormat } from '../hooks/';
 import { ReactComponent as ArrowSvg } from '../assets/img/icons/arrow.svg';
 
 export const Orders = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const totalPriceCalculator = useTotalPriceCalculator();
   const dateFormat = useDateFormat();
@@ -78,7 +80,7 @@ export const Orders = () => {
 
                 <div className="item-order__products">
                   {orderProducts.length}
-                  <span>Products</span>
+                  <span>{t('header.products')}</span>
                 </div>
 
                 <div className="item-order__date">
@@ -114,7 +116,7 @@ export const Orders = () => {
 
             <ButtonClose click={() => setSelectedOrderId(null)} />
 
-            <ButtonAdd title="add products" click={null} />
+            <ButtonAdd title={t('button.addProducts')} click={null} />
           </div>
 
           <ul className="detail-orders__list">

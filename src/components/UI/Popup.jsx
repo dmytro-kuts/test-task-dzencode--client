@@ -1,10 +1,12 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { ButtonInherit, ButtonDelate, ButtonClose } from './buttons';
 
 export const Popup = ({ isOpen, onClose, onDelete, obj }) => {
-  const popupClassName = isOpen ? 'popup open' : 'popup';
+  const { t } = useTranslation();
 
+  const popupClassName = isOpen ? 'popup open' : 'popup';
 
   return (
     <div className={popupClassName}>
@@ -12,7 +14,7 @@ export const Popup = ({ isOpen, onClose, onDelete, obj }) => {
         <div className="popup__content">
           <ButtonClose click={onClose} />
 
-          <h3 className="popup__title">Are you sure you want to delete this object?</h3>
+          <h3 className="popup__title">{t('popup.confirmDelete')}</h3>
           <div className="popup__item  item-popup">
             {obj?.serialNumber && (
               <div className={`item-popup__dot ${obj.isNew ? 'active' : ''}`}></div>
@@ -23,8 +25,8 @@ export const Popup = ({ isOpen, onClose, onDelete, obj }) => {
             </div>
           </div>
           <div className="popup__actions">
-            <ButtonInherit click={onClose} title="Cancel" />
-            <ButtonDelate click={() => onDelete(obj)} title="Delete" />
+            <ButtonInherit click={onClose} title={t('common.cancel')} />
+            <ButtonDelate click={() => onDelete(obj)} title={t('common.delete')} />
           </div>
         </div>
       </div>

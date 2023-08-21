@@ -1,4 +1,8 @@
+import { useTranslation } from 'react-i18next';
+
 export const useDateFormat = () => {
+  const { i18n } = useTranslation();
+
   const formatDate = (dateStr, formatType) => {
     const date = new Date(dateStr);
     let options = {};
@@ -12,7 +16,7 @@ export const useDateFormat = () => {
     } else if (formatType === 'dayOfWeek') {
       options = { weekday: 'long' };
     }
-    return date.toLocaleDateString('en-GB', options);
+    return date.toLocaleDateString(`${i18n.language}-GB`, options);
   };
 
   return {

@@ -1,0 +1,15 @@
+{
+  "header.orders": "Замовлення",
+  "header.products": "Продукти",
+  "header.activeSessions": "Активні сесії: {{count}}",
+  "header.filterByType": "Фільтрувати за типом:",
+  "common.cancel": "Скасувати",
+  "common.delete": "Видалити",
+  "common.start": "Початок",
+  "common.end": "Кінець",
+  "popup.confirmDelete": "Ви впевнені, що хочете видалити цей об'єкт?",
+  "button.addProducts": "Додати продукти",
+  "button.close": "Закрити",
+  "button.list": "Список",
+  "button.remove": "Видалити"
+}

@@ -1,0 +1,15 @@
+{
+  "header.orders": "Orders",
+  "header.products": "Products",
+  "header.activeSessions": "Active Sessions: {{count}}",
+  "header.filterByType": "Filter by Type:",
+  "common.cancel": "Cancel",
+  "common.delete": "Delete",
+  "common.start": "Start",
+  "common.end": "End",
+  "popup.confirmDelete": "Are you sure you want to delete this object?",
+  "button.addProducts": "Add Products",
+  "button.close": "Close",
+  "button.list": "List",
+  "button.remove": "Remove"
+}

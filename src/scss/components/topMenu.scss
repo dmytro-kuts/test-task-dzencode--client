@@ -11,14 +11,30 @@
     padding-bottom: rem(20);
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: rem(20);
   }
   // .top-menu__logo
   &__logo {
+    flex: 1 1 auto;
     img {
       width: rem(40);
       max-height: 100%;
+    }
+  }
+  // .top-menu__language
+  &__language {
+    align-self: start;
+    .select-wraper {
+      position: relative;
+      select {
+        cursor: pointer;
+        width: 100%;
+        padding: rem(8) rem(35) rem(8) rem(10);
+        border-radius: rem(8);
+        border: 1px solid $LightGreyColor;
+        margin-bottom: rem(8);
+      }
+
     }
   }
   // .top-menu__active

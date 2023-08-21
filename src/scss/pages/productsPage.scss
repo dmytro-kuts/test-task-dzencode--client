@@ -53,12 +53,11 @@
   }
   // .select__body
   &__body {
+    cursor: pointer;
     background-color: $whiteColor;
     padding: rem(8);
     border-radius: rem(8);
     min-width: rem(120);
-    option {
-      padding: rem(40);
-    }
+
   }
 }

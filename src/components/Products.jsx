@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import { fetchProducts, deleteProduct } from '../redux/products/productsSlice';
 import { fetchOrders } from '../redux/orders/ordersSlice';
@@ -11,6 +12,7 @@ import { ButtonRemove } from '../components/UI/buttons';
 import { useDateFormat } from '../hooks/';
 
 export const Products = ({ products, isLoading }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const dateFormat = useDateFormat();
 
@@ -60,11 +62,11 @@ export const Products = ({ products, isLoading }) => {
               <div className="item-product__type">{product.type}</div>
               <div className="item-product__date-guarantee date-guarantee">
                 <div className="date-guarantee__item">
-                  <span>Start: </span>
+                  <span>{t('common.start')} </span>
                   {dateFormat.formatDate(product.guarantee.start, 'dd/mm/yyyy')}
                 </div>
                 <div className="date-guarantee__item">
-                  <span>End: </span>
+                  <span>{t('common.end')} </span>
                   {dateFormat.formatDate(product.guarantee.end, 'dd/mm/yyyy')}
                 </div>
               </div>

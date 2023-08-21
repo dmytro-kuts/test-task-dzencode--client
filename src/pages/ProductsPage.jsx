@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import { Products } from '../components/Products';
 
 export const ProductsPage = () => {
+  const { t } = useTranslation();
+
   const { products, isLoading } = useSelector((state) => state.products);
+
   const [filterType, setFilterType] = useState('');
 
   const filteredProducts = filterType
@@ -19,11 +23,12 @@ export const ProductsPage = () => {
         <div className="products__container">
           <div className="products__header header-products">
             <h2 className="header-products__title title">
-              Products /<span> {filteredProducts.length ? filteredProducts.length : 0}</span>
+              {t('header.products')} /
+              <span> {filteredProducts.length ? filteredProducts.length : 0}</span>
             </h2>
             <div className="header-products__select select">
               <label htmlFor="typeFilter" className="select__label">
-                Filter by Type:
+                {t('header.filterByType')}
               </label>
               <select
                 id="typeFilter"
