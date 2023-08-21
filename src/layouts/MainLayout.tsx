@@ -1,9 +1,10 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+
 import { TopMenu } from '../components/TopMenu';
 import { NavigationMenu } from '../components/NavigationMenu';
 
-export const MainLayout = () => {
+export const MainLayout: React.FC = () => {
   return (
     <div className="wrapper">
       <TopMenu />

@@ -1,28 +1,34 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { fetchProducts, deleteProduct } from '../redux/products/productsSlice';
-import { fetchOrders } from '../redux/orders/ordersSlice';
+import { Product, fetchProducts, deleteProduct } from '../redux/products/productsSlice';
+import { Order, fetchOrders } from '../redux/orders/ordersSlice';
 
-import { Popup } from '../components/UI/Popup';
-import { Preloader } from '../components/UI/Preloader';
-import { ButtonRemove } from '../components/UI/buttons';
+import { Popup } from './UI/Popup';
+import { Preloader } from './UI/Preloader';
+import { ButtonRemove } from './UI/buttons';
 
-import { useDateFormat } from '../hooks/';
+import { useDateFormat } from '../hooks';
+import { RootState, useAppDispatch } from '../redux/store';
 
-export const Products = ({ products, isLoading }) => {
+interface ProductsProps {
+  products: Product[];
+  isLoading: boolean;
+}
+
+export const Products: React.FC<ProductsProps> = ({ products, isLoading }) => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const dateFormat = useDateFormat();
 
-  const { orders } = useSelector((state) => state.orders);
+  const { orders } = useSelector((state: RootState) => state.orders);
 
-  const [selectedProductsId, setSelectedProductsId] = React.useState(null);
+  const [selectedProductsId, setSelectedProductsId] = React.useState<number | null>(null);
   const [isDeletePopupOpen, setIsDeletePopupOpen] = React.useState(false);
-  const [popupSelectedOrder, setPopupSelectedOrder] = React.useState([]);
+  const [popupSelectedOrder, setPopupSelectedOrder] = React.useState<Order | Product | null>(null);
 
-  const handleDeleteClick = (product) => {
+  const handleDeleteClick = (product: Product) => {
     setSelectedProductsId(product.id);
     setPopupSelectedOrder(product);
     setIsDeletePopupOpen(true);

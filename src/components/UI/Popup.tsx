@@ -3,7 +3,14 @@ import { useTranslation } from 'react-i18next';
 
 import { ButtonInherit, ButtonDelate, ButtonClose } from './buttons';
 
-export const Popup = ({ isOpen, onClose, onDelete, obj }) => {
+interface PopupProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onDelete: (obj: any) => void;
+  obj: any;
+}
+
+export const Popup: React.FC<PopupProps> = ({ isOpen, onClose, onDelete, obj }) => {
   const { t } = useTranslation();
 
   const popupClassName = isOpen ? 'popup open' : 'popup';

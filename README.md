@@ -64,22 +64,63 @@ The project's directory structure is organized as follows:
 
 - |-- node_modules
 - |-- public
-- |-- src
-- |   |-- api
-- |   |-- assets
-- |   |-- components
-- |   |-- hooks
-- |   |-- layouts
-- |   |-- pages
-- |   |-- redux
-- |   |-- scss
-- |   |-- App.js
-- |   |-- index.js
-- |-- .env
-- |-- .gitignore
-- |-- package-lock.json
-- |-- package.json
-- |-- README.md
+- |-- src/
+-     |-- api/
+-     |   |-- axios.ts
+-     |-- assets/
+-     |   |-- img/
+-     |       |-- icons/
+-     |       |-- products/
+-     |       |-- user/
+-     |       |-- logo.png
+-     |-- components/
+-     |   |-- UI/
+-     |       |-- buttons/
+-     |           |-- ButtonAdd.tsx
+-     |           |-- ButtonClose.tsx
+-     |           |-- ButtonDelete.tsx
+-     |           |-- ButtonInherit.tsx
+-     |           |-- ButtonList.tsx
+-     |           |-- ButtonRemove.tsx
+-     |           |-- index.ts
+-     |       |-- LanguageSelector.tsx
+-     |       |-- Popup.tsx
+-     |       |-- Preloader.tsx
+-     |   |-- NavigationMenu.tsx
+-     |   |-- Orders.tsx
+-     |   |-- Products.tsx
+-     |   |-- TopMenu.tsx
+-     |-- hooks/
+-     |   |-- useDateFormat.ts
+-     |   |-- useTotalPriceCalculator.ts
+-     |-- layouts/
+-     |   |-- MainLayout.tsx
+-     |-- pages/
+-     |   |-- OrdersPage.tsx
+-     |   |-- ProductsPage.tsx
+-     |-- redux/
+-     |   |-- activeSessions/
+-     |       |-- activeSessionsSlice.ts
+-     |   |-- orders/
+-     |       |-- ordersSlice.ts
+-     |   |-- products/
+-     |       |-- productsSlice.ts
+-     |   |-- store.ts
+-     |-- scss/
+-     |   |-- base/
+-     |   |-- components/
+-     |   |-- pages/
+-     |   |-- global.scss
+-     |   |-- index.scss
+-     |-- App.tsx
+-     |-- i18n.ts
+-     |-- index.tsx
+-     |-- .env
+-     |-- .gitignore
+-     |-- DatabaseSchema.txt
+-     |-- package-lock.json
+-     |-- package.json
+-     |-- README.md
 
 
 

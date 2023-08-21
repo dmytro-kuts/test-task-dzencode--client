@@ -1,6 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+interface ActiveSessionsState {
+  activeSessions: number;
+}
+
+const initialState: ActiveSessionsState = {
   activeSessions: 0,
 };
 
@@ -9,7 +13,5 @@ const activeSessionsSlice = createSlice({
   initialState,
   reducers: {},
 });
-
-export const { increment, decrement } = activeSessionsSlice.actions;
 
 export default activeSessionsSlice.reducer;

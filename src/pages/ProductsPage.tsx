@@ -3,19 +3,23 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import { Products } from '../components/Products';
+import { RootState } from '../redux/store';
+import { Product } from '../redux/products/productsSlice';
 
-export const ProductsPage = () => {
+export const ProductsPage: React.FC = () => {
   const { t } = useTranslation();
 
-  const { products, isLoading } = useSelector((state) => state.products);
+  const { products, isLoading } = useSelector((state: RootState) => state.products);
 
-  const [filterType, setFilterType] = useState('');
+  const [filterType, setFilterType] = useState<string>('');
 
-  const filteredProducts = filterType
-    ? products.filter((product) => product.type === filterType)
+  const filteredProducts: Product[] = filterType
+    ? products.filter((product: Product) => product.type === filterType)
     : products;
 
-  const productTypes = [...new Set(products.map((product) => product.type))];
+  const productTypes: string[] = Array.from(
+    new Set(products.map((product: Product) => product.type)),
+  );
 
   return (
     <section className="page__products products ">

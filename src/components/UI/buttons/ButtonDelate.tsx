@@ -2,7 +2,12 @@ import React from 'react';
 
 import { ReactComponent as RemoveSvg } from '../../../assets/img/icons/remove.svg';
 
-export const ButtonDelate = ({ title, click }) => {
+interface ButtonProps {
+  title: string;
+  click: () => void;
+}
+
+export const ButtonDelate: React.FC<ButtonProps> = ({ title, click }) => {
   return (
     <button className="button button--del" onClick={click}>
       <RemoveSvg />

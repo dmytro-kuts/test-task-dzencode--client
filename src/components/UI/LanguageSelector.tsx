@@ -1,19 +1,23 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-export const LanguageSelector = () => {
+export const LanguageSelector: React.FC = () => {
   const { i18n } = useTranslation();
 
-  const handleLanguageChange = (event) => {
+  const handleLanguageChange = (event: { target: { value: string } }) => {
     const selectedLanguage = event.target.value;
     i18n.changeLanguage(selectedLanguage);
     localStorage.setItem('selectedLanguage', selectedLanguage);
+
+    document.documentElement.lang = selectedLanguage;
   };
 
   React.useEffect(() => {
     const savedLanguage = localStorage.getItem('selectedLanguage');
     if (savedLanguage) {
       i18n.changeLanguage(savedLanguage);
+      
+      document.documentElement.lang = savedLanguage;
     }
   }, [i18n]);
 

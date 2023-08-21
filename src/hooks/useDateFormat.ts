@@ -1,9 +1,19 @@
 import { useTranslation } from 'react-i18next';
 
-export const useDateFormat = () => {
+interface DateFormat {
+  formatDate: (
+    dateStr: any,
+    formatType: 'dd/mmmm/yyyy' | 'dd/mm' | 'dd/mm/yyyy' | 'dayOfWeek',
+  ) => string;
+}
+
+export const useDateFormat = (): DateFormat => {
   const { i18n } = useTranslation();
 
-  const formatDate = (dateStr, formatType) => {
+  const formatDate = (
+    dateStr: string,
+    formatType: 'dd/mmmm/yyyy' | 'dd/mm' | 'dd/mm/yyyy' | 'dayOfWeek',
+  ): string => {
     const date = new Date(dateStr);
     let options = {};
 

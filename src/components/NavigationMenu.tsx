@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import PhotoCover from '../assets/img/user/photo-cover.svg';
 import { ReactComponent as SettingsSvg } from '../assets/img/icons/settings.svg';
 
-export const NavigationMenu = () => {
+export const NavigationMenu: React.FC = () => {
   const { t, i18n } = useTranslation();
 
   React.useEffect(() => {

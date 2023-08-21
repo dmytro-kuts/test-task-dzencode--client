@@ -1,33 +1,34 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { fetchOrders, deleteOrder } from '../redux/orders/ordersSlice';
-import { fetchProducts, deleteProduct } from '../redux/products/productsSlice';
+import { Order, fetchOrders, deleteOrder } from '../redux/orders/ordersSlice';
+import { Product, fetchProducts, deleteProduct } from '../redux/products/productsSlice';
 
 import { Popup } from '../components/UI/Popup';
 import { Preloader } from '../components/UI/Preloader';
 import { ButtonAdd, ButtonClose, ButtonList, ButtonRemove } from '../components/UI/buttons';
 
 import { useTotalPriceCalculator, useDateFormat } from '../hooks/';
+import { RootState, useAppDispatch } from '../redux/store';
 
 import { ReactComponent as ArrowSvg } from '../assets/img/icons/arrow.svg';
 
-export const Orders = () => {
+export const Orders: React.FC = () => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const totalPriceCalculator = useTotalPriceCalculator();
   const dateFormat = useDateFormat();
 
-  const { orders, isLoading } = useSelector((state) => state.orders);
-  const { products } = useSelector((state) => state.products);
+  const { orders, isLoading } = useSelector((state: RootState) => state.orders);
+  const { products } = useSelector((state: RootState) => state.products);
 
-  const [selectedOrderId, setSelectedOrderId] = React.useState(null);
-  const [selectedProducts, setSelectedProducts] = React.useState([]);
-  const [isDeletePopupOpen, setIsDeletePopupOpen] = React.useState(false);
-  const [deleteTarget, setDeleteTarget] = React.useState(null);
+  const [selectedOrderId, setSelectedOrderId] = React.useState<number | null>(null);
+  const [selectedProducts, setSelectedProducts] = React.useState<Product[]>([]);
+  const [isDeletePopupOpen, setIsDeletePopupOpen] = React.useState<boolean>(false);
+  const [deleteTarget, setDeleteTarget] = React.useState<Order | Product | null>(null);
 
-  const handleDelete = (obj) => {
+  const handleDelete = (obj: Order | Product) => {
     setDeleteTarget(obj);
     setIsDeletePopupOpen(true);
   };
@@ -46,7 +47,7 @@ export const Orders = () => {
     }
   };
 
-  const handleOrderClick = (order) => {
+  const handleOrderClick = (order: Order) => {
     setSelectedOrderId(order.id);
     setSelectedProducts(products.filter((product) => product.order === order.id));
   };
@@ -116,7 +117,7 @@ export const Orders = () => {
 
             <ButtonClose click={() => setSelectedOrderId(null)} />
 
-            <ButtonAdd title={t('button.addProducts')} click={null} />
+            <ButtonAdd title={t('button.addProducts')} />
           </div>
 
           <ul className="detail-orders__list">

@@ -5,7 +5,7 @@ import { MainLayout } from './layouts//MainLayout';
 import { OrdersPage } from './pages/OrdersPage';
 import { ProductsPage } from './pages/ProductsPage';
 
-export const App = () => {
+export const App: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>

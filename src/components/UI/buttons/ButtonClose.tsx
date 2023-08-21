@@ -3,7 +3,11 @@ import { useTranslation } from 'react-i18next';
 
 import { ReactComponent as CloseSvg } from '../../../assets/img/icons/close.svg';
 
-export const ButtonClose = ({ click }) => {
+interface ButtonProps {
+  click: () => void;
+}
+
+export const ButtonClose: React.FC<ButtonProps> = ({ click }) => {
   const { t } = useTranslation();
   return (
     <button className="button button--close" aria-label={t('button.close')} onClick={click}>

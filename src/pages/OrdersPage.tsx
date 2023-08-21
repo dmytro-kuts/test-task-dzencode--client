@@ -3,11 +3,12 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import { Orders } from '../components/Orders';
+import { RootState } from '../redux/store';
 
-export const OrdersPage = () => {
+export const OrdersPage: React.FC = () => {
   const { t } = useTranslation();
 
-  const { orders } = useSelector((state) => state.orders);
+  const { orders } = useSelector((state: RootState) => state.orders);
 
   return (
     <section className="page__orders orders ">
