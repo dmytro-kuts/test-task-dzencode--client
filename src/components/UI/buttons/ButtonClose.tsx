@@ -10,7 +10,7 @@ interface ButtonProps {
 export const ButtonClose: React.FC<ButtonProps> = ({ click }) => {
   const { t } = useTranslation();
   return (
-    <button className="button button--close" aria-label={t('button.close')} onClick={click}>
+    <button className="button button--close" aria-label={t('button.setting')} onClick={click}>
       <CloseSvg />
     </button>
   );

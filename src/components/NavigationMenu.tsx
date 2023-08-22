@@ -19,7 +19,7 @@ export const NavigationMenu: React.FC = () => {
       <div className="sidebar__container-big">
         <div className="sidebar__avatar avatar-sidebar">
           <img className="avatar-sidebar__image" src={PhotoCover} alt="Avatar" />
-          <Link to="/" className="avatar-sidebar__link">
+          <Link to="/" className="avatar-sidebar__link" aria-label={t('button.close')}>
             <SettingsSvg />
           </Link>
         </div>

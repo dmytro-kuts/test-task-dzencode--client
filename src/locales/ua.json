@@ -11,5 +11,7 @@
   "button.addProducts": "Додати продукти",
   "button.close": "Закрити",
   "button.list": "Список",
-  "button.remove": "Видалити"
+  "button.remove": "Видалити",
+  "button.setting": "Налаштування",
+  "select.language": "Змінити мову"
 }

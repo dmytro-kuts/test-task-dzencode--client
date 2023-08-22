@@ -11,5 +11,7 @@
   "button.addProducts": "Add Products",
   "button.close": "Close",
   "button.list": "List",
-  "button.remove": "Remove"
+  "button.remove": "Remove",
+  "button.setting": "Setting",
+  "select.language": "Change Language"
 }

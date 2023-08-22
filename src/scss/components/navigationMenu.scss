@@ -74,8 +74,9 @@
   &__image {
     overflow: hidden;
     border-radius: 50%;
-    width: rem(70);
-    max-height: 100%;
+    max-width: rem(70);
+    width: 100%;
+    height: fit-content;
   }
   // .avatar-sidebar__link
   &__link {

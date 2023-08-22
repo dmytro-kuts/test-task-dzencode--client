@@ -161,8 +161,9 @@
   }
   // .product-orders__image
   &__image {
-    width: rem(40);
-    height: min-content;
+    width: fit-content;
+    max-height: rem(50);
+    height: 100%;
   }
   // .product-orders__title
   &__title {

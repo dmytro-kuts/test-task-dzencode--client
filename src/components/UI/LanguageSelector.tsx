@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 export const LanguageSelector: React.FC = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const handleLanguageChange = (event: { target: { value: string } }) => {
     const selectedLanguage = event.target.value;
@@ -16,14 +16,18 @@ export const LanguageSelector: React.FC = () => {
     const savedLanguage = localStorage.getItem('selectedLanguage');
     if (savedLanguage) {
       i18n.changeLanguage(savedLanguage);
-      
+
       document.documentElement.lang = savedLanguage;
     }
   }, [i18n]);
 
   return (
     <div className="select-wraper">
-      <select onChange={handleLanguageChange} value={i18n.language}>
+      <select
+        onChange={handleLanguageChange}
+        value={i18n.language}
+        aria-label={t('select.language')}
+      >
         <option value="en">English</option>
         <option value="ua">Українська</option>
       </select>
