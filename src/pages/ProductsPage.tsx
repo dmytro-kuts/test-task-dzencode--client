@@ -40,7 +40,7 @@ const ProductsPage: React.FC = () => {
                 onChange={(e) => setFilterType(e.target.value)}
                 className="select__body"
               >
-                <option value="">All</option>
+                <option value="all">All</option>
                 {productTypes.map((type) => (
                   <option key={type} value={type}>
                     {type}

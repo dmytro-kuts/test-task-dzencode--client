@@ -11,11 +11,11 @@
     padding-bottom: rem(20);
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: rem(20);
   }
   // .top-menu__logo
   &__logo {
-    flex: 1 1 auto;
     img {
       width: rem(40);
       max-height: 100%;
