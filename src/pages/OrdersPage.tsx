@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Orders } from '../components/Orders';
 import { RootState } from '../redux/store';
 
-export const OrdersPage: React.FC = () => {
+const OrdersPage: React.FC = () => {
   const { t } = useTranslation();
 
   const { orders } = useSelector((state: RootState) => state.orders);
@@ -23,3 +23,6 @@ export const OrdersPage: React.FC = () => {
     </section>
   );
 };
+
+
+export default OrdersPage

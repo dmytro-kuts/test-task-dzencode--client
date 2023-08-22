@@ -1,12 +1,13 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-
+import { Order } from '../../redux/orders/ordersSlice';
+import { Product } from '../../redux/products/productsSlice';
 import { ButtonInherit, ButtonDelate, ButtonClose } from './buttons';
 
 interface PopupProps {
   isOpen: boolean;
   onClose: () => void;
-  onDelete: (obj: any) => void;
+  onDelete: (obj: Order | Product) => void;
   obj: any;
 }
 

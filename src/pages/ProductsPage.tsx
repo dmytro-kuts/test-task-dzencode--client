@@ -6,7 +6,7 @@ import { Products } from '../components/Products';
 import { RootState } from '../redux/store';
 import { Product } from '../redux/products/productsSlice';
 
-export const ProductsPage: React.FC = () => {
+const ProductsPage: React.FC = () => {
   const { t } = useTranslation();
 
   const { products, isLoading } = useSelector((state: RootState) => state.products);
@@ -55,3 +55,6 @@ export const ProductsPage: React.FC = () => {
     </section>
   );
 };
+
+
+export default ProductsPage
