@@ -55,9 +55,8 @@ Displays orders and products with details.
 - React Router
 - Axios
 - Sass
-- React-Redux for state management
-- React Router for navigation
-- xios for making API requests
+- react-i18next
+- TypeScript
 
 # Folder Structure
 The project's directory structure is organized as follows:
